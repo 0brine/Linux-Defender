@@ -1,30 +1,19 @@
 import socket
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-print(s)
-
-target = '10.24.17.6'
-port = 25
+target = ""
+port = 0
 
 
-def pscan(port):
+def pscan(t, p):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print('Target', t, '\nPort', p, end=' ')
     try:
-        s.connect((target, port))
-        return True
+        s.connect((t, p))
+        print('is open\n')
     except:
-        return False
+        print('is closed\n')
 
 
-print('Port', port, end=' ')
-
-if pscan(port):
-    print('is open')
-else:
-    print('is closed')
-
-result = s.recv(4096)
-
-while len(result) > 0:
-    print(result)
-    result = s.recv(1024)
+pscan("10.24.17.6", 25)     #smtp
+pscan("www", 80)            #http
+pscan("10.24.17.6", 443)    #https
