@@ -1,19 +1,22 @@
-# This is a sample Python script.
+import socket
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+target = input("What website to scan: ")
 
 
-print("Sami ist ein spasst")
+def pscan(port):
+    try:
+        s.connect((target, port))
+        return True
+    except:
+        return False
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+x = 80
+print('Port', x, end=' ')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if pscan(x):
+    print('is open')
+else:
+    print('is closed')
