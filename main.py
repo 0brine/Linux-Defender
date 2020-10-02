@@ -11,7 +11,7 @@ def pscan(t, p):
         s.connect((t, p))
         print('is open')
     except:
-        print('is closed\n------------------------')
+        print('is closed\n-------- ERROR --------\n')
 
 
 pscan("10.24.17.6", 22)     #ssh
