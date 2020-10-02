@@ -2,7 +2,10 @@ import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-target = input("What website to scan: ")
+print(s)
+
+target = '10.24.17.6'
+port = 25
 
 
 def pscan(port):
@@ -13,10 +16,15 @@ def pscan(port):
         return False
 
 
-x = 80
-print('Port', x, end=' ')
+print('Port', port, end=' ')
 
-if pscan(x):
+if pscan(port):
     print('is open')
 else:
     print('is closed')
+
+result = s.recv(4096)
+
+while len(result) > 0:
+    print(result)
+    result = s.recv(1024)

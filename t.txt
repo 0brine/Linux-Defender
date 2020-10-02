@@ -1,4 +1,4 @@
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-10-02 15:02 Mitteleuropäische Sommerzeit
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-10-02 15:02 Mitteleuropï¿½ische Sommerzeit
 
 NSE: Loaded 151 scripts for scanning.
 
@@ -40,7 +40,7 @@ Discovered open port 22/tcp on 10.24.17.6
 
 Discovered open port 143/tcp on 10.24.17.6
 
-Discovered open port 80/tcp on 10.24.17.6
+Discovered open port 80/tcp on >
 
 Increasing send delay for 10.24.17.6 from 0 to 5 due to 15 out of 36 dropped probes since last increase.
 
