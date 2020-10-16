@@ -3,9 +3,9 @@ import re
 
 protocols = {
     "ssh": ["SSH-2.*"],
-    "smtp": ["220.*"],
-    "http": [""],
-    "https": [""],
+    "smtp": ["220.*", "HELO test", "250.*", "quit"],
+    "http": ["", "get", ".*400 Bad Request[.,\s]*"],
+    "https": ["", "get"],
     "imap": ["\\* OK.*", "0011 LOGOUT", "a"],
     "imaps": ["", "test", "\\* BYE Fatal error: tls_start_servertls\\(\\) failed"],
     "pop3": ["\\+OK.*", "quit"],
@@ -40,7 +40,7 @@ def runProtocol(s, protocolName):
             print(re.search("^" + string + "\\s*$", msg).string)
             worked = msg == re.search("^" + string + "\\s*$", msg).string
         else:
-            s.send(string.encode())
+            s.send((string + "\r\n").encode())
 
         if not worked:
             print("Protocol " + protocolName + " did not work")
@@ -54,9 +54,9 @@ def runProtocol(s, protocolName):
 
 #pscan("10.24.17.6", 25, "smtp")
 # pscan("10.24.17.6", 22, "ssh")
-# pscan("10.24.17.6", 587, "smtp")
+pscan("10.24.17.6", 587, "smtp")
 # pscan("www", 80, "http")
 # pscan("10.24.17.6", 443, "https")
 #pscan("10.24.17.6", 143, "imap")
-pscan("10.24.17.6", 993, "imaps")
+#pscan("10.24.17.6", 993, "imaps")
 # pscan("10.24.17.6", 110, "pop3")
