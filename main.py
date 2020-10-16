@@ -1,7 +1,7 @@
 import socket
 
 
-def pscan(host, port, protocoll):
+def pscan(host, port, protocol):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print('Target', host, '\nPort', port, end=' ')
     try:
