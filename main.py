@@ -1,15 +1,14 @@
 import socket
 
-target = ""
-port = 0
 
-
-def pscan(t, p):
+def pscan(host, port, protocoll):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print('Target', t, '\nPort', p, end=' ')
+    print('Target', host, '\nPort', port, end=' ')
     try:
-        s.connect((t, p))
+        s.connect((host, port))
         print('is open')
+
+        print(s.recv(1024));
     except:
         print('is closed\n-------- ERROR --------\n')
 
