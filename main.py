@@ -1,5 +1,6 @@
 import socket
 import re
+import Process
 
 protocols = {
     "ssh": ["SSH-2.*"],
@@ -10,6 +11,8 @@ protocols = {
     "imaps": ["", "test", "\\* BYE Fatal error: tls_start_servertls\\(\\) failed"],
     "pop3": ["\\+OK.*", "quit"],
 }
+
+processes = []
 
 
 def pscan(host, port, protocol):
@@ -49,15 +52,15 @@ def runProtocol(s, protocolName):
 
     return worked
 
+def main:
+    file = open("config.txt", "r")
+    lines = file.readlines()
 
-file = open("config.txt","r")
-lines = file.readlines()
+    print(lines[0].split(","))
+    for line in lines:
+        params = line.replace(" ", "").split(",")
 
-print(lines[0].split(","))
-for line in lines:
-    line = line.replace(" ", "")
-    pscan(line.split(",")[0], int(line.split(",")[1]), line.split(",")[2])
-    print(line)
+        processes.append(Process(params[0], int(params[1]), params[2], params[3], params[4]))
 
 
 #pscan("10.24.17.6", 25, "smtp")
