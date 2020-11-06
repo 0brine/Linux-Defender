@@ -8,38 +8,37 @@ body {
   margin: 0;
 }
 
-.container {
-  margin: 20px auto;
-  width: 80%;
-}
+
 .row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px 0;
+  justify-content: space-between;
 }
-.col50 {
+
+.process {
   flex: 50%;
-}
-.col20 {
-  flex: 20%;
-}
-.col80 {
-  flex: 80%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
 }
 
-.br-5 {
+.box {
   border-radius: 5px;
+  width: 100px;
+  height: 100px;
 }
 
-.pl-10 {
-  padding-left: 10px;
+.content {
+  padding-left: 20px;
 }
-.px-20 {
+
+.container {;
   padding: 0 20px;
-}
-.ta-right {
   text-align: right;
+  margin: 20px auto;
+  width: 80%;
 }
 
 .bg-ok {
