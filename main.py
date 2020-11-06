@@ -52,7 +52,8 @@ def runProtocol(s, protocolName):
 
     return worked
 
-def main:
+
+def main():
     file = open("config.txt", "r")
     lines = file.readlines()
 
@@ -62,6 +63,8 @@ def main:
 
         processes.append(Process(params[0], int(params[1]), params[2], params[3], params[4]))
 
+
+main()
 
 #pscan("10.24.17.6", 25, "smtp")
 #pscan("10.24.17.6", 22, "ssh")
