@@ -7,11 +7,8 @@ class Process:
         self.port = port
         self.protocol = protocol
         self.interval = interval
-        self.countdown = interval
+        self.countdown = 0
 
     def action(self):
         Protocols.pscan(self.host, self.port, self.protocol)
-
-
-
 
