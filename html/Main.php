@@ -26,13 +26,14 @@
         fclose($myfile);
         $rows = explode("<br>",$fileR);
         for ($x = 0; $x < count($rows)-1; $x++) {
-
+            $rows[$x] = str_replace(" ","",$rows[$x]);
             $rowsSplit = explode(",",$rows[$x]);
+
             echo '<div class="process">
             <div class="box bg-'.$rowsSplit[0] .'"></div>
             <div class="content">
                 <h2>'.$rowsSplit[3].'</h2>
-                <p>'.$rowsSplit[1]." ".$rowsSplit[2].'</p>
+                <p>'.$rowsSplit[1].":".$rowsSplit[2].'</p>
             </div>
         </div>';
         }
