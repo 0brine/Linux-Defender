@@ -15,9 +15,9 @@ class Process:
         if len(self.results) < 1:
             return "-"
         elif len(self.results) < 2:
-            self.results[-1] if "g" else "r"
+            return "g" if self.results[-1] else "r"
         else:
-            self.results[-1] if "g" else self.results[-2] if "o" else "r"
+            return "g" if self.results[-1] else "o" if self.results[-2] else "r"
 
     def action(self):
         worked = Protocols.pscan(self.host, self.port, self.protocol)

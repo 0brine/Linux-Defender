@@ -38,7 +38,7 @@ def start():
 def log_processes():
     status_file = open("status.txt", "w")
     for p in processes:
-        status_file.write(", ".join([p.status, p.host, str(p.port), p.protocol]))
+        status_file.write(", ".join([p.status, p.host, str(p.port), p.protocol]) + "\n")
     status_file.close()
 
 
