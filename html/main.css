@@ -41,16 +41,18 @@ body {
   width: 80%;
 }
 
-.bg-ok {
+.bg-g {
   background-color: #06a53b;
 }
-.bg-warning {
+.bg-y {
   background-color: #ffaa2b;
 }
-.bg-error {
+.bg-r {
   background-color: #c7251c;
 }
-
+.bg-- {
+  background-color: #444444;
+}
 
 @media screen and (max-width: 850px) {
   .col50 {
