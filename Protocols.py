@@ -9,6 +9,7 @@ protocols = {
     "imap": ["\\* OK.*", "0011 LOGOUT"],
     "imaps": ["", "test", "\\* BYE Fatal error: tls_start_servertls\\(\\) failed"],
     "pop3": ["\\+OK.*", "quit"],
+    # "ping": #TODO
 }
 
 
@@ -20,15 +21,16 @@ def pscan(host, port, protocol):
     except:
         print("Port " + port + " for protocol " + protocol + " is closed")
 
-    worked = runProtocol(s, protocol)
+    worked = test_protocol(s, protocol)
     if worked:
         print("Protocol " + protocol + " worked fine")
     else:
         print("Protocol " + protocol + " did not work")
+    return worked
 
 
-def runProtocol(s, protocolName):
-    protocol = protocols[protocolName]
+def test_protocol(s, protocol_name):
+    protocol = protocols[protocol_name]
     worked = True
 
     for i in range(len(protocol)):
