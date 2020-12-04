@@ -14,6 +14,10 @@ protocols = {
 
 
 def pscan(host, port, protocol):
+    #workaround
+    #print("Protocol " + protocol + " worked fine")
+    #return True
+
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print('Target', host, '\nPort', port, end=' ')
     try:
