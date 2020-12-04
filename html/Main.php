@@ -37,6 +37,9 @@
             </div>
         </div>';
         }
+        $page = $_SERVER['PHP_SELF'];
+        $sec = "4";
+        header("Refresh: $sec; url=$page");
 
         ?>
 
@@ -49,6 +52,4 @@
 </body>
 
 </html>
-
-
 
