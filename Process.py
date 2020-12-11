@@ -2,13 +2,14 @@ import Protocols
 
 
 class Process:
-    def __init__(self, host, port, protocol, interval=300):
+    def __init__(self, host, port, protocol, interval=300, args=[]):
         self.host = host
         self.port = port
         self.protocol = protocol
         self.interval = interval
         self.results = []
         self.countdown = 0
+        self.args = args
 
     @property
     def status(self):
@@ -20,5 +21,6 @@ class Process:
             return "g" if self.results[-1] else "o" if self.results[-2] else "r"
 
     def action(self):
-        worked = Protocols.pscan(self.host, self.port, self.protocol)
+        worked = Protocols.pscan(self.host, self.port, self.protocol, self.interval, self.args)
         self.results.append(worked)
+        print(",".join([self.status, self.host, str(self.port), self.protocol]))

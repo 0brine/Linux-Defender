@@ -1,6 +1,5 @@
 import time
 from Process import Process
-
 processes = []
 
 
@@ -24,7 +23,7 @@ def start():
     for line in lines:
         params = line.replace(" ", "").replace("\n", "").split(",")
 
-        processes.append(Process(params[0], int(params[1]), params[2], int(params[3])))
+        processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), params[4:]))
 
     changes = 0
     while True:
@@ -38,9 +37,8 @@ def start():
 def log_processes():
     status_file = open("status.txt", "w")
     for p in processes:
-        status_file.write(", ".join([p.status, p.host, str(p.port), p.protocol]) + "\n")
+        status_file.write(",".join([p.status, p.host, str(p.port), p.protocol]) + "\n")
     status_file.close()
 
 
 start()
-
