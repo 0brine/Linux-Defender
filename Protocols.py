@@ -10,7 +10,6 @@ protocols = {
     "imap": ["\\* OK.*", "0011 LOGOUT"],
     "imaps": ["", "test", "\\* BYE Fatal error: tls_start_servertls\\(\\) failed"],
     "pop3": ["\\+OK.*", "quit"],
-    # "ping": #TODO
 }
 special_protocols = {
     "ping": ["wsl ping $0 -c $1", ".*$1 packets transmitted, $1 received.*"],
