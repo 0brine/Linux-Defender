@@ -51,7 +51,6 @@ def read_config():
     for line in lines:
         params = line.replace(" ", "").replace("\n", "").split(",")
 
-
         temp_processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), params[4:]))
 
     processes.clear()
