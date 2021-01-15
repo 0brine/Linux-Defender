@@ -13,6 +13,8 @@ protocols = {
 }
 special_protocols = {
     "ping": ["wsl ping $0 -c $1", ".*$1 packets transmitted, $1 received.*"],
+    "snmp": ["wsl snmpget -v 1 -c $4 $0 iso.3.6.1.2.1.1.1.0", ".*iso\\.3\\.6\\.1\\.2\\.1\\.1\\.1\\.0 = STRING:.*"],
+    "dns": ["wsl host www.google.com 192.168.10.10", ".*www\\.google\\.com is an alias for forcesafesearch\\.google\\.com.*"],
 }
 
 

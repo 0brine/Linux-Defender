@@ -1,6 +1,8 @@
 import time
 from Process import Process
 processes = []
+last_config = ""
+config_process = Process("", 0, "", 60)
 
 
 def tick():
@@ -17,13 +19,8 @@ def tick():
 
 
 def start():
-    file = open("config.txt", "r")
-    lines = file.readlines()
-
-    for line in lines:
-        params = line.replace(" ", "").replace("\n", "").split(",")
-
-        processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), params[4:]))
+    config_process.action = read_config
+    config_process.action()
 
     changes = 0
     while True:
@@ -40,5 +37,25 @@ def log_processes():
         status_file.write(",".join([p.status, p.host, str(p.port), p.protocol]) + "\n")
     status_file.close()
 
+
+def read_config():
+    global last_config
+    file = open("config.txt", "r")
+    lines = file.readlines()
+    if "".join(lines) == last_config:
+        return
+
+    last_config = "".join(lines)
+
+    temp_processes = []
+    for line in lines:
+        params = line.replace(" ", "").replace("\n", "").split(",")
+
+
+        temp_processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), params[4:]))
+
+    processes.clear()
+    processes.append(config_process)
+    processes.extend(temp_processes)
 
 start()
