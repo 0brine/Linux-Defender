@@ -2,7 +2,7 @@ import Protocols
 
 
 class Process:
-    def __init__(self, host, port, protocol, interval=300, args=[]):
+    def __init__(self, host, port, protocol, interval=300, args=[], display=True):
         self.host = host
         self.port = port
         self.protocol = protocol
@@ -10,6 +10,7 @@ class Process:
         self.results = []
         self.countdown = 0
         self.args = args
+        self.display = display
 
     @property
     def status(self):

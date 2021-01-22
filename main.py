@@ -2,7 +2,7 @@ import time
 from Process import Process
 processes = []
 last_config = ""
-config_process = Process("", 0, "", 60)
+config_process = Process("", 0, "", 60, display=False)
 
 
 def tick():
@@ -34,6 +34,8 @@ def start():
 def log_processes():
     status_file = open("status.txt", "w")
     for p in processes:
+        if not p.display:
+            continue
         status_file.write(",".join([p.status, p.host, str(p.port), p.protocol]) + "\n")
     status_file.close()
 
