@@ -18,6 +18,7 @@ function edit(rowNumber) {
         d.innerText = "";
         d.appendChild(input);
     }
+
     tds[5].querySelector("a").remove();
     let submit = document.createElement("input");
     submit.setAttribute("type","submit");
