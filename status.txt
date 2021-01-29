@@ -6,6 +6,6 @@ g,10.24.17.6,993,imaps
 g,10.24.17.6,110,pop3
 g,10.24.17.6,80,http
 g,10.24.17.6,143,imap
-g,192.168.10.10,0,dns
-g,sw-a109.htl-steyr.ac.at,0,snmp
-g,google.at,1,ping
+r,192.168.10.10,0,dns
+r,sw-a109.htl-steyr.ac.at,0,snmp
+r,google.at,1,ping
