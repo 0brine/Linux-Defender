@@ -22,6 +22,7 @@
   $protocol = $_POST["protocol"];
   $interval = $_POST["interval"];
   $arguments = $_POST["arguments"];
+  $delete = $_POST["delete"];
 
   $myfile = fopen("../x/config.txt", "r") or die("Unable to open file!");
   $lines = array();
@@ -32,13 +33,18 @@
 
   fclose($myfile);
 
+  if ($delete) {
+    $lines[$row] = "";
+  } else {
   if (count($lines) <= $row) {
-    $lines[$row] = "\n" . $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
+   $lines[$row] = "\n" . $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
   } else if (count($lines) - 1 == $row){
     $lines[$row] = $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
   } else {
     $lines[$row] = $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments . "\n";
   }
+  }
+
 
 
   $myfile = fopen("../x/config.txt", "w") or die("Unable to open file!");
