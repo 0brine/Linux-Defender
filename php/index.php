@@ -36,6 +36,7 @@
 
     fclose($logfile);
 
+
     $logrows = explode("<br>",$fileR);
     for ($x = 0; $x < count($logrows)-1; $x++) {
         $logrows[$x] = str_replace(" ","",$logrows[$x]);
