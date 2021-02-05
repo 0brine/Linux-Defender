@@ -1,13 +1,20 @@
 let table = document.getElementById("table");
+let edditing = -1;
 
 function edit(rowNumber) {
+    if (edditing != -1)
+        return;
+
+    edditing = rowNumber;
+
     let row = table.querySelector("tr.row-" + rowNumber);
     let tds = row.querySelectorAll("td");
 
     let hiddenRowInput = document.createElement("input");
     hiddenRowInput.setAttribute("name", "row");
-    hiddenRowInput.value(rowNumber);
-    hiddenRowInput.style("display:none;")
+    hiddenRowInput.value = rowNumber;
+    hiddenRowInput.style = "display:none;";
+    row.appendChild(hiddenRowInput)
 
 
     for (let i = 0; i < 5; i++) {
@@ -23,6 +30,11 @@ function edit(rowNumber) {
     let submit = document.createElement("input");
     submit.setAttribute("type","submit");
     submit.value = "🖫";
+    submit.click = () => doneEditing(rowNumber);
     tds[5].appendChild(submit);
 
+}
+
+function doneEditing(rowNumber) {
+    edditing = -1;
 }

@@ -1,9 +1,16 @@
 import time
+from datetime import datetime
 from Process import Process
 processes = []
 last_config = ""
-config_process = Process("", 0, "", 60, display=False)
 
+custom_processes = []
+
+config_process = Process("", 0, "", 60, display=False)
+log_process = Process("", 0, "", 60, display=False)
+
+custom_processes.append(config_process)
+custom_processes.append(log_process)
 
 def tick():
     checks = 0
@@ -21,6 +28,8 @@ def tick():
 def start():
     config_process.action = read_config
     config_process.action()
+
+    log_process.action = log
 
     changes = 0
     while True:
@@ -56,7 +65,14 @@ def read_config():
         temp_processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), params[4:]))
 
     processes.clear()
-    processes.append(config_process)
+    processes.extend(custom_processes)
     processes.extend(temp_processes)
+
+
+def log():
+    log_file = open("log.txt", "w")
+    log_file.write("Last refresh:" + str(datetime.now()))
+    log_file.close()
+
 
 start()
