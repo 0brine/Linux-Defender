@@ -17,6 +17,7 @@
 
 <body>
   <button style="padding: 5px; margin: 2px;" onclick="location.href='/~supvis/cgi/index.php'">Overview</button>
+
   <h1 style="text-align: center; margin-bottom: 70px">Linux Defender - Configuration</h1>
 
   <form action="sucsess.php" method="post">
@@ -47,14 +48,16 @@
         $rows = explode("<br>", $fileR);
         for ($x = 0; $x < count($rows) - 1; $x++) {
           $rows[$x] = str_replace(" ", "", $rows[$x]);
-          $rowsSplit = explode(",", $rows[$x], 5);
+          $rowsSplit = explode(",", $rows[$x], 6);
 
           echo '<tr class="row-' . $x . '"> 
         <td class="ip">' . $rowsSplit[0] . '</td>
-        <td class="port">' . $rowsSplit[1] . '</td>
+        <td class="port">' . $rowsSplit[1]. '</td>
         <td class="protocol">' . $rowsSplit[2] . '</td>
         <td class="interval">' . $rowsSplit[3] . '</td>
         <td class="arguments">' . $rowsSplit[4] . '</td>
+        <td class="groups">' . $rowsSplit[5] . '</td>
+
         <td style="text-align: center">
             <a style="cursor: pointer; padding: 0" onclick="edit(' . $x . ')">
                 &#9998;
