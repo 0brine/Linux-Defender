@@ -14,10 +14,16 @@ function edit(rowNumber) {
     hiddenRowInput.setAttribute("name", "row");
     hiddenRowInput.value = rowNumber;
     hiddenRowInput.style = "display:none;";
-    row.appendChild(hiddenRowInput)
+    row.appendChild(hiddenRowInput);
+
+    let hiddenDeleteInput = document.createElement("input");
+    hiddenDeleteInput.setAttribute("name", "delete");
+    hiddenDeleteInput.value = false;
+    hiddenDeleteInput.style = "display:none;";
+    row.appendChild(hiddenDeleteInput);
 
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         let d = tds[i];
         let input = document.createElement("input");
         input.setAttribute("name", d.className);
@@ -26,13 +32,20 @@ function edit(rowNumber) {
         d.appendChild(input);
     }
 
-    tds[5].querySelector("a").remove();
-    let submit = document.createElement("input");
-    submit.setAttribute("type","submit");
-    submit.value = "🖫";
-    submit.click = () => doneEditing(rowNumber);
-    tds[5].appendChild(submit);
+    tds[6].querySelector("a").remove();
 
+    let submit = document.createElement("a");
+    submit.innerText = "🖫";
+    submit.onclick = () => document.getElementById("editForm").submit();
+    tds[6].appendChild(submit);
+
+    let remove = document.createElement("a");
+    remove.innerText = "🗑";
+    remove.onclick = () => {
+        document.querySelector("input[name=delete]").value = true;
+        document.getElementById("editForm").submit();
+    }
+    tds[6].appendChild(remove);
 }
 
 function doneEditing(rowNumber) {

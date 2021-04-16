@@ -20,7 +20,7 @@
 
   <h1 style="text-align: center; margin-bottom: 70px">Linux Defender - Configuration</h1>
 
-  <form action="sucsess.php" method="post">
+  <form action="sucsess.php" method="post" id="editForm">
     <table id="table">
       <thead style="color: #f5f5f5;">
         <tr>
@@ -28,6 +28,7 @@
           <th>Port</th>
           <th>Protokoll</th>
           <th>Intervall</th>
+          <th>Gruppe</th>
           <th>Argumente</th>
           <th>Bearbeiten</th>
         </tr>

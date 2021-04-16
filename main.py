@@ -45,7 +45,7 @@ def log_processes():
     for p in processes:
         if not p.display:
             continue
-        status_file.write(",".join([p.status, p.host, str(p.port), p.protocol]) + "\n")
+        status_file.write(",".join([p.status, p.host, str(p.port), p.protocol, str(p.group_id)]) + "\n")
     status_file.close()
 
 
@@ -62,7 +62,7 @@ def read_config():
     for line in lines:
         params = line.replace(" ", "").replace("\n", "").split(",")
 
-        temp_processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), params[4:]))
+        temp_processes.append(Process(params[0], int(params[1]), params[2], int(params[3]), int(params[4]), params[5:]))
 
     processes.clear()
     processes.extend(custom_processes)

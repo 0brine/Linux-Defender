@@ -34,15 +34,21 @@
   fclose($myfile);
 
   if ($delete) {
-    $lines[$row] = "";
+    if (count($lines) <= $row) {
+    } else if (count($lines) - 1 == $row) {
+      $lines[$row] = "";
+      $lines[$row - 1] = rtrim($lines[$row - 1], "\n");
+    } else {
+      $lines[$row] = "";
+    }
   } else {
-  if (count($lines) <= $row) {
-   $lines[$row] = "\n" . $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
-  } else if (count($lines) - 1 == $row){
-    $lines[$row] = $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
-  } else {
-    $lines[$row] = $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments . "\n";
-  }
+    if (count($lines) <= $row) {
+     $lines[$row] = "\n" . $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
+    } else if (count($lines) - 1 == $row){
+      $lines[$row] = $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments;
+    } else {
+      $lines[$row] = $ip . "," . $port . "," . $protocol . "," . $interval . "," . $arguments . "\n";
+    }
   }
 
 

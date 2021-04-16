@@ -2,13 +2,14 @@ import Protocols
 
 
 class Process:
-    def __init__(self, host, port, protocol, interval=300, args=[], display=True):
+    def __init__(self, host, port, protocol, interval=300, group_id=-1, args=[], display=True):
         self.host = host
         self.port = port
         self.protocol = protocol
         self.interval = interval
         self.results = []
         self.countdown = 0
+        self.group_id = group_id
         self.args = args
         self.display = display
 
@@ -24,4 +25,4 @@ class Process:
     def action(self):
         worked = Protocols.pscan(self.host, self.port, self.protocol, self.interval, self.args)
         self.results.append(worked)
-        print(",".join([self.status, self.host, str(self.port), self.protocol]))
+        print(",".join([self.status, self.host, str(self.port), str(self.group_id), self.protocol]))
